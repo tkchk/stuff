@@ -1,0 +1,10 @@
+Configure with:
+./auto/configure --with-debug --with-cc-opt='-O0 -g' --prefix=`pwd`/sbin
+
+Compile with 4 cores:
+make -j 4
+
+Launch directives:
+daemon off; - enable foreground
+master_process off; - disable worker processes
+error_log  logs/error.log  debug; - point to log debug info
