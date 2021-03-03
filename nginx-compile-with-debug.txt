@@ -5,12 +5,12 @@ Compile with 4 cores:
 make -j 4
 
 Launch directives:
-daemon off; - enable foreground
-master_process off; - disable worker processes
-error_log  logs/error.log  debug; - point to log debug info
+daemon off;
+master_process off;
+error_log  logs/error.log  debug;
 
 Launch gdbserver on remote machine:
-while true; do gdbserver :9091 ./objs/nginx; done
+gdbserver :9091 ./objs/nginx
 
 Use this launch.json in vscode:
 """
