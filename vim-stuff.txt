@@ -1,0 +1,5 @@
+VIM disable mouse shit:
+:set mouse-=a
+
+VIM enable syntax:
+:syntax on
