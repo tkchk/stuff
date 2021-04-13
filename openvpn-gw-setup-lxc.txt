@@ -1,7 +1,7 @@
 0. Install openvpn
 apt install openvpn
 
-1. If U use lxc container, make sure that it's privileged and paste following in /etc/pve/lxc/<id>.conf
+1. If you use lxc container, make sure that it's privileged and paste following in /etc/pve/lxc/<id>.conf (proxmox sample)
 lxc.cgroup.devices.allow = c 10:200 rwm
 lxc.hook.autodev = sh -c "modprobe tun; cd ${LXC_ROOTFS_MOUNT}/dev; mkdir net; mknod net/tun c 10 200; chmod 0666 net/tun"
 
@@ -34,7 +34,7 @@ COMMIT
 COMMIT
 # Completed on Sun Apr 11 15:25:31 2021
 
-5.1 Just for reference, these are imperative commands. You can add them manually & save your whole iptables config
+5.1 Just for reference, these are imperative commands. You can add them manually & save your whole iptables config later
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 iptables -A INPUT -i tun0 -j ACCEPT
 iptables -A INPUT -i eth0 -j ACCEPT
