@@ -1,0 +1,23 @@
+List all vms:
+
+virsh list --all
+----------------------------------------------------
+Backup xml definition:
+
+virsh dumpxml domain > domain.xml
+----------------------------------------------------
+Start vm:
+
+virsh start domain
+----------------------------------------------------
+Add vm:
+
+virsh define domain.xml
+----------------------------------------------------
+Delete vm definition:
+
+virsh undefine domain
+----------------------------------------------------
+Delete vm with storage:
+
+virsh undefine domain --remove-all-storage
