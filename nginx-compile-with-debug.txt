@@ -2,7 +2,7 @@ Install basic library dependencies:
 apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev
 
 Configure with:
-./auto/configure --with-debug --with-cc-opt='-O0 -g' --prefix=`pwd`/sbin
+./auto/configure --with-debug --with-cc-opt='-O0 -g'
 
 Compile with 4 cores:
 make -j 4
