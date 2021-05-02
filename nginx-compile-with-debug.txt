@@ -5,7 +5,7 @@ Configure with:
 ./auto/configure --with-debug --with-cc-opt='-O0 -g'
 
 Compile with 4 cores:
-make -j 4
+make -j4
 
 Launch directives:
 daemon off;
