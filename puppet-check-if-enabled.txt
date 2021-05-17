@@ -1,0 +1,2 @@
+Run as root:
+cat `puppet agent --configprint agent_disabled_lockfile`
