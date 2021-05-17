@@ -1,8 +1,8 @@
 Install basic library dependencies:
-apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev
+apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev build-essential
 
 Configure with:
-./auto/configure --with-debug --with-cc-opt='-O0 -g'
+./auto/configure --with-debug
 
 Compile with 4 cores:
 make -j4
