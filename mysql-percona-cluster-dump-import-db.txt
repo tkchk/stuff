@@ -1,0 +1,3 @@
+1. mysqldump --set-gtid-purged=off --no-data --single-transaction -uuser -p existing_db > new_db.sql
+2. Create new_db manually
+3. mysql -uuser -p new_db < new_db.sql
