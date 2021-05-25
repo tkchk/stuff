@@ -1,0 +1,23 @@
+Fix for "I'm sorry, Dave, I can't do that.  Symbol format `elf64-x86-64' unknown" error in gdb.
+Client: MacOS
+Target: x86-64 linux ELF binary
+
+===
+
+Download the gdb, unarchive it and cd to it:
+wget 'https://ftp.gnu.org/gnu/gdb/gdb-9.2.tar.xz' && tar -xvf gdb-9.2.tar.xz && cd gdb-9.2
+
+Apply following:
+"#include <string.h>" after line 361 in file 'gdb/acinclude.m4'
+"#include <string.h>" after line 024 in file './bfd/elf-bfd.h'
+
+Configure it:
+../configure --target=x86_64-linux-gnu --enable-targets=all --prefix=${PREFIX}
+
+Compile with 4 threads (dependent on cpu cores):
+make -j8
+
+Install it (will be installed in ${PREFIX} directory)
+make install
+
+Link it somewhere in $PATH & use it anywhere u want
