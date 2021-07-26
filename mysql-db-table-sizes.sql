@@ -11,9 +11,9 @@ SELECT
 FROM
   information_schema.TABLES
 WHERE
-    TABLE_SCHEMA = "bookstore"
+    TABLE_SCHEMA = "YOUR_DB"
   AND
-    TABLE_NAME = "book"
+    TABLE_NAME = "YOUR_TABLE"
 ORDER BY
   (DATA_LENGTH + INDEX_LENGTH)
 DESC;
