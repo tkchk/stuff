@@ -1,18 +1,21 @@
+Download sources and unpack them:
+1) wget 'https://jyetech.com/wp-content/uploads/2018/07/dso138-source-codes-basic.zip'
+2) tar -xvf dso138-source-codes-basic.zip
+
 Launch openocd with stlink transport & stm32f1x chip
 1) Add 'set CPUTAPID 0x2ba01477' to ~/Library/xPacks/scripts/target/stm32f1x.cfg on line 9
 2) openocd -f ~/Library/xPacks/scripts/interface/stlink.cfg -f ~/Library/xPacks/scripts/target/stm32f1x.cfg
 
-Build firmware from code in dso138-source-codes-basic on some debian system
-1) needs changes:
+Build firmware from code in dso138-source-codes-basic:
+1) needs changes in Makefile:
 1.1) REMOVE_CMD=rm instead of REMOVE_CMD=cm-rm - this is for cleanup
 1.2) CFLAGS += -fpromote-loop-indices - should be commented out
-1.3) Lines 736 & 753 in Libraries/CMSIS/CM3/CoreSupport/code_cm3.c should be edited like this - otherwise, you'll get assembler errors:
+1.3) Lines 736 & 753 in Libraries/CMSIS/CM3/CoreSupport/core_cm3.c should be edited like this - otherwise, you'll get assembler errors:
 1.3.1) - __ASM volatile ("strexb %0, %2, [%1]" : "=r" (result) : "r" (addr), "r" (value) );
 1.3.2) + __ASM volatile ("strexb %0, %2, [%1]" : "=&r" (result) : "r" (addr), "r" (value) );
 2) Run make
 
-Copy FLASH_RUN/113-13801-037.hex file from debian system and flash the image
-1) scp deb1:/home/tkchk/Desktop/dso138-source-codes-basic/FLASH_RUN/113-13801-037.hex .
-2) telnet localhost 4444 - connect to local openocd session
-3) program 113-13801-037.hex
-4) Click reset button on the device
+Flash the image:
+1) telnet localhost 4444 - connect to local openocd session
+2) program 113-13801-037.hex
+3) Click reset button on the device
