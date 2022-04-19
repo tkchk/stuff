@@ -1,1 +1,21 @@
+# This will run with acceleration. You won't be able to step in the kernel correctly. fast as f, boyyy.
 qemu-system-x86_64 -cpu core2duo -m 4096 -no-reboot -drive file=deb2.vdi,if=virtio -serial stdio -smp 1 -vga std -accel hvf
+
+# This will run the system with breakpoints and shit
+# -smp 2 = number of cpu cores reported
+# -m 4096 = memory in MB
+# -drive file=deb2.vdi,if=virtio = file for disk drive and driver
+# -vga virtio = video driver
+# -s = enable gdb port :1234 and halt right away
+# -S = halt on startup and wait for gdb connection
+qemu-system-x86_64 -m 4096 -drive file=deb2.vdi,if=virtio -vga virtio -smp 2 -s -S
+
+# Run gdb with kernel or symbol map target like this
+gdb vmlinux
+
+# Then, attach to remote 
+target remote :1234
+
+# Set hardware breakpoint to the kernel entry point and continue
+hbreak start_kernel
+continue
