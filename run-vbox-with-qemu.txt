@@ -1,8 +1,1 @@
-qemu-system-x86_64                                \                 1 ↵
-  -cpu core2duo                                  \
-  -m 4096                                         \
-  -no-reboot                                     \
-  -drive file=deb1.vdi,if=virtio    \
-  -serial stdio                                  \
-  -smp 1                                         \
-  -vga std      -accel hvf
+qemu-system-x86_64 -cpu core2duo -m 4096 -no-reboot -drive file=deb2.vdi,if=virtio -serial stdio -smp 1 -vga std -accel hvf
