@@ -1,5 +1,5 @@
 # This will run with acceleration. You won't be able to step in the kernel correctly. fast as f, boyyy.
-qemu-system-x86_64 -cpu core2duo -m 4096 -no-reboot -drive file=deb2.vdi,if=virtio -serial stdio -smp 1 -vga std -accel hvf
+qemu-system-x86_64 -cpu core2duo -m 4096 -no-reboot -drive file=/Users/aleksandr/VMs/deb2/deb2.vdi,if=virtio -serial stdio -smp 1 -vga std -accel hvf
 
 # This will run the system with breakpoints and shit
 # -smp 2 = number of cpu cores reported
@@ -8,7 +8,7 @@ qemu-system-x86_64 -cpu core2duo -m 4096 -no-reboot -drive file=deb2.vdi,if=virt
 # -vga virtio = video driver
 # -s = enable gdb port :1234 and halt right away
 # -S = halt on startup and wait for gdb connection
-qemu-system-x86_64 -m 4096 -drive file=deb2.vdi,if=virtio -vga virtio -smp 2 -s -S
+qemu-system-x86_64 -m 4096 -drive file=/Users/aleksandr/VMs/deb2/deb2.vdi,if=virtio -vga virtio -smp 1 -s -S
 
 # Run gdb with kernel or symbol map target like this
 gdb vmlinux
