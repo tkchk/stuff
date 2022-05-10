@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# This will print all grant statements for all users
+# It is assumed that client password for mysql is provided in ~/.my.cnf file
+# \x27 = single quote for awk
+mysql -B -N -e 'use mysql; select user, host from user;' | sed 's/\t/,/g' | awk -F',' '{print "show grants for \x27"$1"\x27@\x27"$2"\x27;"}' | while read cmd;
+do
+        res=`mysql -B -N -e "$cmd"`;
+        echo "$res;";
+done
