@@ -12,8 +12,13 @@ Apply following:
 "#include <string.h>" after line 361 in file 'gdb/acinclude.m4'
 "#include <string.h>" after line 024 in file 'bfd/elf-bfd.h'
 
+$PREFIX is a directory that will accept files and libs for make install
+
 Configure it:
-../configure --target=x86_64-linux-gnu --enable-targets=all --prefix=${PREFIX}
+./configure --target=x86_64-linux-gnu --enable-targets=all --prefix=${PREFIX}
+
+sim was incompatible with macOS as hell. Should be disabled. like this:
+./configure --target=x86_64-linux-gnu --enable-targets=all --with-python=/usr/local/bin/python3 --prefix=${PREFIX} --disable-sim
 
 Compile with 8 threads (dependent on cpu cores):
 make -j8
