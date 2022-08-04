@@ -3,8 +3,8 @@ Download sources and unpack them:
 2) tar -xvf dso138-source-codes-basic.zip
 
 Launch openocd with stlink transport & stm32f1x chip
-1) Add 'set CPUTAPID 0x2ba01477' to ~/Library/xPacks/scripts/target/stm32f1x.cfg on line 9
-2) openocd -f ~/Library/xPacks/scripts/interface/stlink.cfg -f ~/Library/xPacks/scripts/target/stm32f1x.cfg
+1) Add 'set CPUTAPID 0x2ba01477' to ~/Library/xPacks/@xpack-dev-tools/openocd/0.11.0-4.1/.content/scripts/target/stm32f1x.cfg on line 9
+2) openocd -f ~/Library/xPacks/@xpack-dev-tools/openocd/0.11.0-4.1/.content/scripts/interface/stlink.cfg -f ~/Library/xPacks/@xpack-dev-tools/openocd/0.11.0-4.1/.content/scripts//target/stm32f1x.cfg
 
 Build firmware from code in dso138-source-codes-basic:
 1) needs changes in Makefile:
