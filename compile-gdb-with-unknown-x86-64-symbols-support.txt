@@ -27,3 +27,39 @@ Install it (will be installed in ${PREFIX} directory)
 make install
 
 Link it somewhere in $PATH & use it anywhere u want
+
+
+===
+This is to configure gdb with python3 linked and all targets.
+The apt dependency list was taken from history. Some of them may not work. Just ignore and go to the next one
+   32  sudo apt install python
+  114  sudo apt install libncurses6
+  190  sudo apt install screen
+  212  sudo apt install python2.7-dev
+  216  sudo apt install libipt-dev
+  218  sudo apt install liblzma-dev
+  220  sudo apt install libbabeltrace-dev
+  453  sudo apt install libgmp-dev
+  455  sudo apt install libmpfr-dev
+  458  sudo apt install libsource-highlight-dev
+  460  sudo apt install xxhash-dev
+  461  sudo apt install libxxhash-dev
+
+configure --host=x86_64-linux-gnu --enable-targets=all \
+             --with-expat \
+             --with-gdb-datadir=/usr/share/gdb \
+             --with-jit-reader-dir=/usr/lib/gdb \
+             --without-libunwind-ia64 \
+             --with-lzma \
+             --with-babeltrace \
+             --with-intel-pt \
+             --with-mpfr \
+             --with-xxhash \
+             --with-python=/usr/bin/python3 \
+             --with-python-libdir=/usr/lib \
+             --with-debuginfod \
+             --without-guile \
+             --enable-source-highlight \
+             --with-separate-debug-dir=/usr/lib/debug \
+             --with-system-gdbinit=/etc/gdb/gdbinit \
+             --with-system-gdbinit-dir=/etc/gdb/gdbinit.d
