@@ -22,6 +22,7 @@ This apt dependency list was taken from bash history. Some of them may not work.
   461  sudo apt install libxxhash-dev
   462  sudo apt install libexpat1 libexpat1-dev
 
+Configure gdb like this. Run make afterwards (Better run make in single-core mode)
 ./configure --host=x86_64-linux-gnu --enable-targets=all \
              --with-expat \
              --with-gdb-datadir=/usr/share/gdb \
