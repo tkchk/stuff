@@ -1,0 +1,51 @@
+Run qemu like this. Point it to SeaBIOS bin. DISPLAY variable is needed only if you run it from remote shell
+DISPLAY=:0 qemu-system-i386 -bios out/bios.bin -s -S
+
+You should have 3 files:
+gdb_init_real_mode.txt - script that changes gdb output and can manipulate 16bit real mode operations
+target.xml             - defines i8086 architecture inside gdb
+i386-32bit.xml         - implements i8086 architecture inside gdb in order to correctly display opcodes and work with binaries/registers
+
+GDB should be compiled with --enable-targets=all and python3 support. Version 12.1 on Debian system compiles just fine.
+This apt dependency list was taken from bash history. Some of them may not work. Just ignore it and go to the next one.
+   32  sudo apt install python
+  114  sudo apt install libncurses6
+  190  sudo apt install screen
+  212  sudo apt install python2.7-dev
+  216  sudo apt install libipt-dev
+  218  sudo apt install liblzma-dev
+  220  sudo apt install libbabeltrace-dev
+  453  sudo apt install libgmp-dev
+  455  sudo apt install libmpfr-dev
+  458  sudo apt install libsource-highlight-dev
+  460  sudo apt install xxhash-dev
+  461  sudo apt install libxxhash-dev
+  462  sudo apt install libexpat1 libexpat1-dev
+
+./configure --host=x86_64-linux-gnu --enable-targets=all \
+             --with-expat \
+             --with-gdb-datadir=/usr/share/gdb \
+             --with-jit-reader-dir=/usr/lib/gdb \
+             --without-libunwind-ia64 \
+             --with-lzma \
+             --with-babeltrace \
+             --with-intel-pt \
+             --with-mpfr \
+             --with-xxhash \
+             --with-python=/usr/bin/python3 \
+             --with-python-libdir=/usr/lib \
+             --with-debuginfod \
+             --without-guile \
+             --enable-source-highlight \
+             --with-separate-debug-dir=/usr/lib/debug \
+             --with-system-gdbinit=/etc/gdb/gdbinit \
+             --with-system-gdbinit-dir=/etc/gdb/gdbinit.d
+
+
+Run gdb like this:
+gdb -ix "gdb_init_real_mode.txt" -ex "set tdesc filename target.xml" out/rom16.o
+
+And point it to QEMU instance
+real-mode-gdb$ target remote :1234
+
+Et voila!
