@@ -1,0 +1,8 @@
+#!/bin/bash
+# Simple script that pulls an image and runs bash
+# inside without actually running entrypoint
+if [ -z "$1" ]; then
+	echo "No argument provided"
+else
+	docker run -it --rm --entrypoint "/bin/sh" $1
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+# This will either send a script argument to sender api
+# or read from stdin and send it to sender api
+if [ -z "$1" ]; then
+	input=$(cat)
+	curl -XPOST -s -o /dev/null "http://sender.local/send" -d "message=$input"
+else
+	curl -XPOST -s -o /dev/null "http://sender.local/send" -d "message=$1"
+fi
